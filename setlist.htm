@@ -2,18 +2,29 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Transpose</title>
+  <title>Notes | Set list</title>
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
-<h1>Set list</h1>
 
-<ul class="nav">
-  <li><a href="library.htm">Library</a><li>
-  <li><a href="setlist.htm">Setlist</a><li>
-  <li><a href="options.htm">Options</a><li>
-</ul>
+<div class="header">
+  <div id="menu" href="#" onclick="notes.menu();">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+  <h1>Set list</h1>
+
+  <ul id="nav" class="hide">
+    <li><a href="library.htm">Library</a></li>
+    <li><a href="setlist.htm">Setlist</a></li>
+    <li><a href="options.htm">Options</a></li>
+  </ul>
+</div>
+
+<p class="footer"><a href="index.htm">Notes</a> | &copy; 2012 Matt Gale</p>
 
 <script type="text/javascript" src="js/notes.js"></script>
 </body>
 </html>
+
