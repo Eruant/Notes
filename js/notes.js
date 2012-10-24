@@ -2,22 +2,81 @@ var notes;
 
 function Notes() {
 
-  var nav = document.getElementById('nav');
+  var nav = document.getElementById('nav'),
+    t = this;
 
   this.profile = {
+    active: 'default',
     default: {
       background: '#335',
       fontColor: '#ffd',
       fontSize: '20px',
       fontFamily: 'Arial',
       linkColor: '#ccc',
-      notes: '#0f0'
+      notes: '#779'
+    },
+    littleball: {
+      background: '#3f3f35',
+      fontColor: '#fff',
+      fontSize: '20px',
+      fontFamily: 'Monaco',
+      linkColor: '#92cd9c',
+      notes: '#caca7b'
+    }
+  };
+
+  this.load = function() {
+    if(window.localStorage !== null) {
+      var profile = JSON.parse(localStorage.getItem('profile'));
+      if(profile !== null) {
+        t.setProfile(profile.active);
+      } else {
+        t.setProfile('default');
+      }
+    } else {
+      t.setProfile('default');
+    }
+  };
+
+  this.save = function() {
+    if(window.localStorage !== null) {
+      localStorage.setItem('profile',JSON.stringify(t.profile));
     }
   };
 
   this.menu = function() {
     this.toggleClass(nav, 'hide');
     return false;
+  };
+
+  this.page = function(name) {
+    switch(name) {
+      case 'options':
+        var profiles = document.getElementById('profiles');
+        for(var p in t.profile) {
+          if(p !== 'active') {
+            var div = document.createElement('div');
+            div.setAttribute('class','item '+p);
+            div.style.border = 'solid 1px '+t.profile[p].fontColor;
+            div.style.background = t.profile[p].background;
+            var html = '<p style="font-family:'+t.profile[p].fontFamily+';'
+              + 'font-size:'+t.profile[p].fontSize+';'
+              + 'color:'+t.profile[p].fontColor+';'
+              + '">'+p+'<br/>Example text, <span style="'
+              + 'color:'+t.profile[p].linkColor+';'
+              + '">link</span>'
+              + ' and <span style="'
+              + 'color:'+t.profile[p].notes+';'
+              + '">note</span></p>'
+            div.innerHTML = html;
+            profiles.appendChild(div);
+          }
+        }
+      break;
+      default:
+        console.log('page not set');
+      break;
+    }
   };
 
   this.setProfile = function(name) {
@@ -32,6 +91,9 @@ function Notes() {
     for(i=0;i<links.length;i++) {
       links[i].style.color = this.profile[name].linkColor;
     }
+
+    t.profile.active = name;
+    t.save();
   };
 
   this.toggleClass = function(item, checkClass) {
@@ -54,8 +116,9 @@ function Notes() {
 
   this.init = function() {
     // load default profile
-    this.setProfile('default');
+    this.load();
     this.setNav();
+    this.page(current_page);
   };
 
   this.init();

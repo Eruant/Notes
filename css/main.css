@@ -76,10 +76,6 @@ ul {
   list-style: none;
 }
 
-.hide {
-  opacity:0;
-}
-
 /* --- header --- */
 
 .header {
@@ -121,14 +117,20 @@ ul {
 
 #nav {
   position: absolute;
+  background: rgba(0,0,0,0.3) none;
+  left: 0%;
   width: inherit;
-  height: 500px;
   margin: 0;
   padding: 0;
-  -webkit-transition: all 0.5s ease-out;  /* Safari 3.2+, Chrome */
-     -moz-transition: all 0.5s ease-out;  /* Firefox 4-15 */
-       -o-transition: all 0.5s ease-out;  /* Opera 10.5–12.00 */
-          transition: all 0.5s ease-out;  /* Firefox 16+, Opera 12.50+ */
+  -webkit-transition: opacity 0.5s ease-out;  /* Safari 3.2+, Chrome */
+     -moz-transition: opacity 0.5s ease-out;  /* Firefox 4-15 */
+       -o-transition: opacity 0.5s ease-out;  /* Opera 10.5–12.00 */
+          transition: opacity 0.5s ease-out;  /* Firefox 16+, Opera 12.50+ */
+}
+
+#nav.hide {
+  left: -100%;
+  opacity: 0;
 }
 
 #nav li {
@@ -137,7 +139,7 @@ ul {
   padding: 10px 0;
   -webkit-border-radius: 10px;
           border-radius: 10px;
-  background: rgba(0,0,0,0.5);
+  background: rgba(50,50,50,0.9);
   text-align: center;
   cursor: pointer;
 }
@@ -148,6 +150,28 @@ ul {
 
 #nav li:hover a {
   color: rgba(0,0,0,0.8) !Important;
+}
+
+/* --- content --- */
+
+.content h2 {
+  text-align: center;
+}
+
+#profiles {
+  text-align: center;
+}
+
+#profiles .item {
+  width: 80%;
+  margin: 10px 9.998%;
+  float: left;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+}
+
+#profiles .item h3 {
+  margin: 5px;
 }
 
 /* --- footer --- */
