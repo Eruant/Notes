@@ -1,0 +1,10 @@
+<section>
+	<header>
+		<h1>Library</h1>
+		<input ng-model="searchText">
+	</header>
+
+	<article ng-repeat="song in songs | filter:searchText">
+	<h2>{{ song.title }} <span>({{ song.author }})</span></h2>
+	</article>
+</section>

@@ -9,17 +9,19 @@ var gulp = require('gulp'),
 		util = require('gulp-util'),
 		jshint = require('gulp-jshint'),
 		jasmine = require('gulp-jasmine'),
+		browserify = require('gulp-browserify'),
 		concat = require('gulp-concat'),
+		uglify = require('gulp-uglify'),
 		minifyHTML = require('gulp-minify-html'),
 		bump = require('gulp-bump');
 
 /**
  * scripts
  **/
-gulp.task('scripts', ['scripts-validate', 'scripts-test']);
+gulp.task('scripts', ['scripts-validate', 'scripts-test', 'scripts-bundle']);
 
 gulp.task('scripts-validate', function () {
-	return gulp.src('src/js/**/*.js')
+	return gulp.src(['src/js/modules/*.js', 'src/js/*.js'])
 		.pipe(jshint('.jshintrc'))
 		.pipe(jshint.reporter('default'));
 });
@@ -27,6 +29,34 @@ gulp.task('scripts-validate', function () {
 gulp.task('scripts-test', function () {
 	return gulp.src('test/*.js')
 		.pipe(jasmine());
+});
+
+/*
+gulp.task('scripts-bundle', function () {
+
+	if (util.env.production) {
+		return gulp.src('src/js/root.js')
+			.pipe(browserify({
+				debug: true
+			}))
+			.pipe(concat('bundle.js'))
+			.pipe(uglify())
+			.pipe(gulp.dest('bin/js'));
+	} else {
+		return gulp.src('src/js/root.js')
+			.pipe(browserify({
+				debug: true
+			}))
+			.pipe(concat('bundle.js'))
+			.pipe(gulp.dest('bin/js'));
+	}
+});
+*/
+
+gulp.task('scripts-bundle', function () {
+	return gulp.src('src/js/**/*.js')
+		.pipe(concat('bundle.js'))
+		.pipe(gulp.dest('bin/js'));
 });
 
 /**
@@ -44,9 +74,14 @@ gulp.task('markup-compress', function () {
 			}))
 			.pipe(gulp.dest('bin/'));
 	} else {
-		return gulp.src('src/html/*.html')
+		return gulp.src('src/html/**/*.html')
 			.pipe(gulp.dest('bin/'));
 	}
+});
+
+gulp.task('data', function () {
+	return gulp.src('src/data/*.json')
+		.pipe(gulp.dest('bin/data'))
 });
 
 gulp.task('bump', function () {
@@ -65,7 +100,7 @@ gulp.task('bump', function () {
 		.pipe(gulp.dest('./'));
 });
 
-gulp.task('compile', ['scripts', 'markup']);
+gulp.task('compile', ['scripts', 'markup', 'data']);
 
 gulp.task('patch', ['compile', 'bump']);
 

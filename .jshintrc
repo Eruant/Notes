@@ -12,6 +12,7 @@
   "white": true,
   "globals": {
     "window": true,
-    "require": true
+    "require": true,
+		"angular": true
   }
 }
