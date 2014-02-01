@@ -12,3 +12,11 @@
 .Icon?
 ehthumbs.db
 Thumbs.db
+
+# Project Specifiy files #
+##########################
+
+.sass-cache/*
+bin/*
+build/*
+node_modules/*
