@@ -1,5 +1,10 @@
-# Notes #
-This is very much in the early stages, so everything will change. I'm trying to build it all in pure JavaScript. Why? I find too many people rely on jQuery, and it will reinforce my skills in JavaScript.
+# Notes
+
+A set list for you. Add your songs, stick them in a playlist, and get on with the show.
+No need to faff around with paper which you'll lose anyway.
+
+> This project is in it's early stages. It's not yet ready for use.
+
 
 
 Index page:
