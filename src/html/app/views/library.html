@@ -4,7 +4,14 @@
 		<input ng-model="searchText">
 	</header>
 
-	<article ng-repeat="song in songs | filter:searchText">
-	<h2>{{ song.title }} <span>({{ song.author }})</span></h2>
+	<article>
+		<ul ng-repeat="song in songs | filter:searchText">
+			<li>
+				<h2>
+					<a href="#/song">{{ song.title }}</a>
+					<span>({{ song.author }})</span>
+				</h2>
+			</li>
+		</ul>
 	</article>
 </section>
