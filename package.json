@@ -11,6 +11,14 @@
     "gulp-minify-html": "~0.1.0",
     "gulp-jasmine": "~0.1.2",
     "gulp-bump": "~0.1.4",
-    "gulp-util": "~2.2.13"
+    "gulp-util": "~2.2.13",
+    "napa": "~0.3.0"
+  },
+  "scripts": {
+    "install": "napa"
+  },
+  "napa": {
+    "angular": "angular/bower-angular",
+    "angular-route": "angular/bower-angular-route"
   }
 }

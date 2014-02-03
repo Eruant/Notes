@@ -13,6 +13,6 @@
   "globals": {
     "window": true,
     "require": true,
-		"angular": true
+    "angular": true
   }
 }
