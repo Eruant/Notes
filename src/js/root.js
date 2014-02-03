@@ -3,39 +3,25 @@
 require('angular/angular');
 require('angular-route/angular-route');
 
+var libraryController = require('./controllers/library').controller;
+var songController = require('./controllers/song').controller;
+
 var app = angular.module('notesApp', ['ngRoute']);
 
 app.config(function ($routeProvider) {
   
   $routeProvider.when('/', {
-    controller: 'LibraryController',
+    controller: 'libraryController',
     templateUrl: 'app/views/library.html'
   }).when('/song', {
-    controller: 'SongController',
+    controller: 'songController',
     templateUrl: 'app/views/song.html'
   });
 
 });
 
-app.controller('LibraryController', function ($scope, libraryFactory) {
-
-  libraryFactory.getSongs()
-    .success(function (data) {
-      $scope.songs = data;
-    })
-    .error(function (error) {
-      window.console.warn(error);
-    });
-
-});
-
-app.controller('SongController', function ($scope) {
-  $scope.song = {
-    "title": "A Test song",
-    "author": "Matt Gale",
-    "body": "This is my song"
-  };
-});
+app.controller('libraryController', ['$scope', 'libraryFactory', libraryController]);
+app.controller('songController', ['$scope', songController]);
 
 app.factory('libraryFactory', function ($http) {
   var factory = {};
