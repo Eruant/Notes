@@ -1,6 +1,6 @@
 {
   "name": "notes",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "devDependencies": {
     "gulp": "~3.5.0",
     "gulp-uglify": "~0.2.0",
