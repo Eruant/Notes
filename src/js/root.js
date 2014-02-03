@@ -3,8 +3,8 @@
 require('angular/angular');
 require('angular-route/angular-route');
 
-var libraryController = require('./controllers/library').controller;
-var songController = require('./controllers/song').controller;
+var library = require('./modules/library');
+var song = require('./modules/song');
 
 var app = angular.module('notesApp', ['ngRoute']);
 
@@ -20,13 +20,5 @@ app.config(function ($routeProvider) {
 
 });
 
-app.controller('libraryController', ['$scope', 'libraryFactory', libraryController]);
-app.controller('songController', ['$scope', songController]);
-
-app.factory('libraryFactory', function ($http) {
-  var factory = {};
-  factory.getSongs = function () {
-    return $http.get('/data/songs.json');
-  };
-  return factory;
-});
+library.init(app);
+song.init(app);
