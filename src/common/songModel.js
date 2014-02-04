@@ -1,4 +1,4 @@
-/*globals exports, console*/
+/*globals exports*/
 
 exports.init = function (app) {
 

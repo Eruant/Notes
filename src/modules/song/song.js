@@ -2,6 +2,15 @@
 
 exports.init = function (app) {
 
+	app.config(function ($routeProvider) {
+		
+		$routeProvider.when('/song', {
+			controller: 'songController',
+			templateUrl: './modules/song/song.html'
+		});
+
+	});
+
   app.controller('songController', function ($scope, songFactory) {
 
     songFactory.getSongs()

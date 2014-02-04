@@ -2,6 +2,15 @@
 
 exports.init = function (app) {
 
+	app.config(function ($routeProvider) {
+
+		$routeProvider.when('/library', {
+			controller: 'libraryController',
+			templateUrl: './modules/library/library.html'
+		});
+
+	});
+
   app.controller('libraryController', function ($scope, songFactory) {
 
     songFactory.getSongs()
