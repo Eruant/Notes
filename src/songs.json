@@ -1,12 +1,14 @@
 [
 	{
-		"id": 1,
+		"id": 0,
 		"title": "This is song one",
-		"author": "Matt Gale"
+		"author": "Matt Gale",
+		"body": "This is a little song that I made up"
 	},
 	{
-		"id": 2,
+		"id": 1,
 		"title": "Another song",
-		"author": "Joe blogs"
+		"author": "Joe blogs",
+		"body": "Joe is great and this is why we sing about him!"
 	}
 ]

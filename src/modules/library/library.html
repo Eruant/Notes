@@ -8,7 +8,7 @@
 		<ul ng-repeat="song in songs | filter:searchText">
 			<li>
 				<h2>
-					<a href="#/song">{{ song.title }}</a>
+					<a ng-href="#/song/{{ song.id }}">{{ song.title }}</a>
 					<span>({{ song.author }})</span>
 				</h2>
 			</li>
