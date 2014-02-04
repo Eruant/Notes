@@ -1,13 +1,17 @@
-/*globals exports*/
+/*globals exports, window*/
 
 exports.init = function (app) {
 
-  app.controller('songController', function ($scope) {
-    $scope.song = {
-      "title": "A Test song",
-      "author": "Matt Gale",
-      "body": "This is my song"
-    };
+  app.controller('songController', function ($scope, songFactory) {
+
+    songFactory.getSongs()
+      .success(function (data) {
+        $scope.song = data[0];
+      })
+      .error(function (error) {
+        window.console.warn(error);
+      });
+
   });
 
 };

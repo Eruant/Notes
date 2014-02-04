@@ -2,9 +2,9 @@
 
 exports.init = function (app) {
 
-  app.controller('libraryController', function ($scope, libraryFactory) {
+  app.controller('libraryController', function ($scope, songFactory) {
 
-    libraryFactory.getSongs()
+    songFactory.getSongs()
       .success(function (data) {
         $scope.songs = data;
       })
@@ -12,14 +12,6 @@ exports.init = function (app) {
         window.console.warn(error);
       });
 
-  });
-
-  app.factory('libraryFactory', function ($http) {
-    var factory = {};
-    factory.getSongs = function () {
-      return $http.get('/songs.json');
-    };
-    return factory;
   });
 
 };
