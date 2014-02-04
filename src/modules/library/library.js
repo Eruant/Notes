@@ -17,7 +17,7 @@ exports.init = function (app) {
   app.factory('libraryFactory', function ($http) {
     var factory = {};
     factory.getSongs = function () {
-      return $http.get('/data/songs.json');
+      return $http.get('/songs.json');
     };
     return factory;
   });

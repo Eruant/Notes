@@ -3,8 +3,8 @@
 require('angular/angular');
 require('angular-route/angular-route');
 
-var library = require('./modules/library');
-var song = require('./modules/song');
+var library = require('./modules/library/library');
+var song = require('./modules/song/song');
 
 var app = angular.module('notesApp', ['ngRoute']);
 
@@ -12,10 +12,10 @@ app.config(function ($routeProvider) {
   
   $routeProvider.when('/', {
     controller: 'libraryController',
-    templateUrl: 'app/views/library.html'
+    templateUrl: './modules/library/library.html'
   }).when('/song', {
     controller: 'songController',
-    templateUrl: 'app/views/song.html'
+    templateUrl: './modules/song/song.html'
   });
 
 });
