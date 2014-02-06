@@ -5,8 +5,6 @@ No need to faff around with paper which you'll lose anyway.
 
 > This project is in it's early stages. It's not yet ready for use.
 
-
-
 Index page:
 
 Needs a menu to go to different sections:
